@@ -52,10 +52,10 @@ const usePopupService = () => {
 
   const closePopup = (id?: string) => {
     if (id) {
-      const popup = popups.value.find(p => p.id === id);
+      const popup = popups.value.find((p:PopupInstance) => p.id === id);
       if (popup) {
         popup.onClose?.();
-        popups.value = popups.value.filter(p => p.id !== id);
+        popups.value = popups.value.filter((p:PopupInstance)  => p.id !== id);
       }
     } else {
       const popup = popups.value[popups.value.length - 1];
@@ -67,7 +67,7 @@ const usePopupService = () => {
   };
 
   const closeAllPopups = () => {
-    popups.value.forEach(popup => {
+    popups.value.forEach((popup:PopupInstance) => {
       popup.onClose?.();
     });
     popups.value = [];
