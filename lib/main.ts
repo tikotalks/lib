@@ -19,7 +19,7 @@ export {
   Icon,
 };
 
-export * from "./composables";
+export { useSpeech, useColor } from "./composables";
 export * from "./utils";
 export * from "./components/ui/Popup/Popup.model";
 export * from "./components/ui/ContextMenu/ContextMenu.model";
