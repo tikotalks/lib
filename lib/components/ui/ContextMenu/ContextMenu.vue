@@ -20,9 +20,8 @@
 
 <script lang="ts" setup>
 import { computed, defineProps, ref, type PropType } from 'vue';
-import { type ContextMenuConfig, ContextMenuConfigDefault } from './ContextMenu.model';
+import { type ContextMenuConfig, ContextMenuConfigDefault, createContextMenuItem } from './ContextMenu.model';
 import ContextMenuItems from './ContextMenuItems.vue';
-import { processMenuItems } from './ContextMenu.utils';
 import ContextPanel from '../ContextPanel/ContextPanel.vue';
 
 // const bemm = useBemm('context-menu');
@@ -41,7 +40,9 @@ const config = computed(() => ({
 	...props.config,
 }));
 
-const menuItems = computed(()=> processMenuItems(config.value.menu));
+const menuItems = computed(()=> props.config.items?.map((item)=>createContextMenuItem(item)).filter((item)=>{
+	return item.active;
+}) || []);
 
 defineExpose({
 	close: () => contextMenuRef.value?.close(),
