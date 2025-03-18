@@ -7,6 +7,9 @@
 			<slot />
 		</template>
 		<template #content>
+			<p>hi</p>
+			{{ config.items }}
+			{{ menuItems }}
 			<ContextMenuItems
 				:items="menuItems"
 				:context-menu="contextMenuRef"
@@ -16,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref, type PropType } from 'vue';
+import { computed, defineProps, ref, type PropType } from 'vue';
 import { type ContextMenuConfig, ContextMenuConfigDefault } from './ContextMenu.model';
 import ContextMenuItems from './ContextMenuItems.vue';
 import { processMenuItems } from './ContextMenu.utils';
@@ -32,12 +35,13 @@ const props = defineProps({
 	},
 });
 
-const { menu } = {
+
+const config = computed(() => ({
 	...ContextMenuConfigDefault,
 	...props.config,
-};
+}));
 
-const menuItems = ref(processMenuItems(menu));
+const menuItems = computed(()=> processMenuItems(config.value.menu));
 
 defineExpose({
 	close: () => contextMenuRef.value?.close(),
