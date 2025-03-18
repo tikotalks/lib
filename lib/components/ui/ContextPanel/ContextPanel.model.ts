@@ -31,6 +31,7 @@ export interface ContextPanelConfig {
 	pressTime: number;
 	menu: Partial<ContextMenuItem>[];
 	vibrate: boolean;
+	items?: ContextMenuItem[];
 }
 
 export const ContextPanelConfigDefault: Required<ContextPanelConfig> = {
@@ -40,4 +41,5 @@ export const ContextPanelConfigDefault: Required<ContextPanelConfig> = {
 	pressTime: 500,
 	menu: [],
 	vibrate: true,
+	items: [],
 };
