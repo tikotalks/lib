@@ -12,7 +12,8 @@
       "import": "./dist/tiko-lib.es.js",
       "require": "./dist/tiko-lib.umd.js",
       "style": "./dist/lib.css"
-    }
+    },
+    "./style": "./dist/lib.css"
   },
   "files": [
     "dist"
