@@ -5,8 +5,6 @@ import { Card } from "./components/ui/Card";
 import { ContextMenu } from "./components/ui/ContextMenu";
 import { InputText } from "./components/ui/InputText";
 import { Icon } from './components/ui/Icon';
-import { useSpeech } from './composables/useSpeech';
-import { useColor } from './composables/useColor';
 
 // Export components
 export {
@@ -18,16 +16,14 @@ export {
   ContextMenu,
   InputText,
   Icon,
-  useSpeech,
-  useColor
 };
+
+export * from "./composables";
+export * from "./utils";
+export * from "./components/ui/Popup/Popup.model";
+export * from "./components/ui/ContextMenu/ContextMenu.model";
+export * from "./components/ui/Button/Button.model";
+
 
 // Export types
 export * from './types';
-
-// // Vue plugin installation
-// export default {
-//   install: (app: App): void => {
-//     app.component('TikoPopup', Popup);
-//   }
-// };
