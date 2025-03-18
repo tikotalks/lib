@@ -10,10 +10,9 @@
     ".": {
       "types": "./dist/main.d.ts",
       "import": "./dist/tiko-lib.es.js",
-      "require": "./dist/tiko-lib.umd.js",
-      "style": "./dist/lib.css"
+      "require": "./dist/tiko-lib.umd.js"
     },
-    "./style": "./dist/lib.css"
+    "./style.css": "./dist/lib.css"
   },
   "files": [
     "dist"
