@@ -31,7 +31,7 @@ import { useColor } from "../../../composables/useColor";
 import { toArray } from "../../../utils";
 import { useImages } from "@tikotalks/media";
 import ContextMenu from "../ContextMenu/ContextMenu.vue";
-import { ButtonSettings } from "../Button";
+import { Button, ButtonSettings } from "../Button";
 import { createContextMenuItem, type ContextMenuItem } from "../ContextMenu";
 
 const { getImageUrl } = useImages();
