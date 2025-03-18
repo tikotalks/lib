@@ -3,7 +3,7 @@ import { Popup, popupService } from './components/ui/Popup';
 import { Button, ButtonGroup } from "./components/ui/Button";
 import { Card } from "./components/ui/Card";
 import { ContextMenu } from "./components/ui/ContextMenu";
-import { InputText } from "./components/ui/InputText";
+import { InputText, FormGroup } from "./components/ui/Form";
 import { Icon } from './components/ui/Icon';
 import './style/app.scss';
 
@@ -17,6 +17,7 @@ export {
   ContextMenu,
   InputText,
   Icon,
+  FormGroup
 };
 
 export { useSpeech, useColor } from "./composables";
