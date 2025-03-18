@@ -4,7 +4,7 @@
     :style="backgroundStyle">
 
     <ContextMenu :class="bemm('actions')" v-if="actions" :config="{
-      items: actions,
+      items: actions.map((a)=>createContextMenuItem(a)),
       position: 'bottom'
     }">
       <Button :class="bemm('action-button')" :icon="ButtonSettings.Icon.THREE_DOTS_HORIZONTAL" />
@@ -32,7 +32,7 @@ import { toArray } from "../../../utils";
 import { useImages } from "@tikotalks/media";
 import ContextMenu from "../ContextMenu/ContextMenu.vue";
 import { ButtonSettings } from "../Button";
-import type { ContextMenuItem } from "../ContextMenu";
+import { createContextMenuItem, type ContextMenuItem } from "../ContextMenu";
 
 const { getImageUrl } = useImages();
 
@@ -46,7 +46,7 @@ const props = defineProps<{
   image?: string | string[];
   icon?: string;
   isGroup?: boolean;
-  actions?: ContextMenuItem[];
+  actions?: Partial<ContextMenuItem>[];
 }>();
 
 const backgroundColor = ref('#ffffff');
