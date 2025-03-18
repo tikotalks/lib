@@ -7,9 +7,6 @@
 			<slot />
 		</template>
 		<template #content>
-			<p>hi</p>
-			{{ config.items }}
-			{{ menuItems }}
 			<ContextMenuItems
 				:items="menuItems"
 				:context-menu="contextMenuRef"
