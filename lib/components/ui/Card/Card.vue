@@ -16,16 +16,17 @@
 </template>
 
 <script lang="ts" setup>
-import { useImages } from "@/composables/useImages";
 import { useBemm } from "bemm";
 import { Icons } from "open-icon";
 import { computed, ref, onMounted, watch } from 'vue';
 import Icon from "../Icon/Icon.vue";
 import { useColor } from "../../../composables/useColor";
-import { toArray } from "@/utils";
+import { toArray } from "../../../utils";
+import { useImages } from "@tikotalks/media";
+
+const { getImageUrl } = useImages();
 
 const { getAverageColor } = useColor();
-const { getImageByName } = useImages();
 
 const bemm = useBemm('card');
 
@@ -41,12 +42,13 @@ const backgroundColor = ref('#ffffff');
 const textColor = ref('#000000');
 
 
+
 const backgroundStyle = computed(() => {
 
   let bgImage: string[] = []
 
   toArray(props.image).forEach((image) => {
-    if (image) bgImage.push(`url(${getImageByName(image, 'thumbnail')})`)
+    if (image) bgImage.push(`url(${getImageUrl(image, 'thumbnail')})`)
   })
 
 
@@ -65,7 +67,7 @@ const setBodyBackground = (color: string) => {
 
 
 const setBackgroundColor = async () => {
-  const imageUrl = getImageByName(toArray(props.image)[0] || '', 'thumbnail');
+  const imageUrl = getImageUrl(toArray(props.image)[0] || '', 'thumbnail');
   if (!imageUrl) return;
 
   const colorData = await getAverageColor(imageUrl);
