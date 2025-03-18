@@ -5,6 +5,7 @@ import { Card } from "./components/ui/Card";
 import { ContextMenu } from "./components/ui/ContextMenu";
 import { InputText } from "./components/ui/InputText";
 import { Icon } from './components/ui/Icon';
+import './style/app.scss';
 
 // Export components
 export {
