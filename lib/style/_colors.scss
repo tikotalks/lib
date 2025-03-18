@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "sass:color";
+
+// Function to determine contrasting color
+@function get-contrast($color) {
+  $luminance:
+    color.channel($color, "red") * 0.2126 +
+    color.channel($color, "green") * 0.7152 +
+    color.channel($color, "blue") * 0.0722;
+  @return if($luminance > 140, #000000, #ffffff);
+}
+
+// Colors map
+$colors: (
+  primary: #9c3c97,
+  secondary: #5cb6c0,
+  tertiary: #c9c47d,
+  dark: #061a2e,
+  light: #ffffff,
+  success: #53d474,
+  error: #c8515d,
+  warning: #ffc107,
+  info: #17a2b8
+);
+
+// Generate custom properties
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+    --text-#{$name}: #{get-contrast($color)};
+  }
+
+  // Set default background/foreground
+  --color-background: var(--color-light);
+  --color-foreground: var(--color-dark);
+  --color-background-alt: color-mix(in srgb, var(--color-dark), var(--color-light) 90%);
+  --color-foreground-alt: color-mix(in srgb, var(--color-dark), var(--color-light) 10%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-dark);
+    --color-foreground: var(--color-light);
+    --color-foreground-alt: color-mix(in srgb, var(--color-dark), var(--color-light) 90%);
+    --color-background-alt: color-mix(in srgb, var(--color-dark), var(--color-light) 10%);
+  }
+}
