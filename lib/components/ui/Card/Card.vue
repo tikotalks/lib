@@ -41,8 +41,6 @@ const props = defineProps<{
 const backgroundColor = ref('#ffffff');
 const textColor = ref('#000000');
 
-
-
 const backgroundStyle = computed(() => {
 
   let bgImage: string[] = []
