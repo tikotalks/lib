@@ -1,7 +1,7 @@
 {
   "name": "@tikotalks/lib",
   "private": false,
-  "version": "0.1.11",
+  "version": "0.1.12",
   "type": "module",
   "main": "dist/tiko-lib.umd.js",
   "module": "dist/tiko-lib.es.js",
