@@ -1,14 +1,16 @@
 <template>
   <Teleport to="body">
     <template v-for="popup, index in popups" :key="popup.id">
-      <div :class="[bemm(), bemm('', popup.config.position), bemm('', `layer-${index}`)]" :style="`--popup-layer: ${index}`">
-        <div v-if="popup.config.hasBackground && index === 0" :class="bemm('background')" @click="closePopup(popup.id)" />
+      <div :class="[bemm(), bemm('', popup.config.position), bemm('', `layer-${index}`)]"
+        :style="`--popup-layer: ${index}`">
+        <div v-if="popup.config.hasBackground && index === 0" :class="bemm('background')"
+          @click="closePopup(popup.id)" />
         <div :class="bemm('container')">
           <div :class="bemm('header')">
 
             <h2 :class="bemm('header-title')">
-              {{  popup.title }}
-              <component v-if="popup.slots?.headerTitle"  :is="popup.slots.headerTitle" />
+              {{ popup.title }}
+              <component v-if="popup.slots?.headerTitle" :is="popup.slots.headerTitle" />
             </h2>
             <div :class="bemm('header-actions')">
               <component v-if="popup.slots?.headerActions" :is="popup.slots.headerActions" />
@@ -28,20 +30,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useBemm } from 'bemm';
-import { popupService } from './Popup.service';
-import { Colors, Size } from '@/types';
 import { Icons } from 'open-icon';
-import Button from '@/components/ui/Button/Button.vue';
+import { popupService } from './Popup.service';
+import { Colors, Size } from '../../../types';
+import { Button } from '../Button';
 
 const { bemm } = useBemm('popup');
 const popups = computed(() => popupService.popups.value);
 const closePopup = popupService.closePopup;
 
-onMounted(() => {
-  console.log('popups', popups.value)
-});
 </script>
 
 <style lang="scss">
@@ -68,7 +67,7 @@ onMounted(() => {
     max-width: 90vw;
     max-height: 90vh;
     transform: translateY(calc(var(--popup-layer) * 3em));
-    box-shadow: 0 0 3em 0 rgba(0,0,0,1);
+    box-shadow: 0 0 3em 0 rgba(0, 0, 0, 1);
   }
 
   &__header {
@@ -77,18 +76,17 @@ onMounted(() => {
     justify-content: space-between;
   }
 
-  &__header-actions{
+  &__header-actions {
     display: flex;
     align-items: center;
     gap: 1em;
   }
 
-  &__header-title{
+  &__header-title {
     color: var(--color-secondary);
   }
 
-  &__close {
-  }
+  &__close {}
 
   &--bottom {
     align-items: flex-end;
