@@ -18,9 +18,16 @@
     </div>
   </div>
 
-  <template  v-if="actionItems.length">
-    <Button :class="bemm('action-button')" v-if="actionItems.length == 1" :size="size" :color="ButtonSettings.Color.Primary" :icon="actionItems[0].icon" @click="actionItems[0].action && actionItems[0].action()">{{ actionItems[0].label }}</Button>
-    <ContextMenu :class="bemm('actions')" v-else :config="{
+  <template v-if="actionItems.length">
+    <Button
+       v-if="actionItems.length == 1"
+      :class="bemm('actions')"
+      :size="size"
+      :color="ButtonSettings.Color.Primary"
+      :icon="actionItems[0].icon"
+      @click="actionItems[0].action ? actionItems[0].action() : ()=>{}"></Button>
+
+    <ContextMenu v-else :class="bemm('actions')"  :config="{
       items: actionItems,
       position: 'bottom'
     }">
@@ -35,10 +42,10 @@
 import { useBemm } from "bemm";
 import { Icons } from "open-icon";
 import { computed, ref, onMounted, watch } from 'vue';
+import { useImages } from "@tikotalks/media";
 import Icon from "../Icon/Icon.vue";
 import { useColor } from "../../../composables/useColor";
 import { toArray } from "../../../utils";
-import { useImages } from "@tikotalks/media";
 import ContextMenu from "../ContextMenu/ContextMenu.vue";
 import { Button, ButtonSettings } from "../Button";
 import { createContextMenuItem, type ContextMenuItem } from "../ContextMenu";
@@ -120,7 +127,7 @@ watch(() => props.image, () => {
   align-items: flex-end;
 
   &--small{
-    width: 5em;
+    width: 7.5em;
   }
   &--medium{
     width: 10em;
@@ -275,6 +282,10 @@ watch(() => props.image, () => {
     font-size: 1.25em;
     line-height: 1;
     backdrop-filter: blur(4px);
+
+    .card--small &{
+      font-size: .75em;
+    }
 
   }
 
