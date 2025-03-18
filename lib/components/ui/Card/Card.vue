@@ -3,6 +3,13 @@
   @mouseover="setBodyBackground(backgroundColor)"
     :style="backgroundStyle">
 
+    <ContextMenu :class="bemm('actions')" v-if="actions" :config="{
+      items: actions,
+      position: 'bottom'
+    }">
+      <Button :class="bemm('action-button')" :icon="ButtonSettings.Icon.THREE_DOTS_HORIZONTAL" />
+    </ContextMenu>
+
     <div :class="bemm('category-icon')" v-if="isGroup">
       <Icon :name="Icons.FILE_ARCHIVE"></Icon>
     </div>
@@ -23,6 +30,9 @@ import Icon from "../Icon/Icon.vue";
 import { useColor } from "../../../composables/useColor";
 import { toArray } from "../../../utils";
 import { useImages } from "@tikotalks/media";
+import ContextMenu from "../ContextMenu/ContextMenu.vue";
+import { ButtonSettings } from "../Button";
+import type { ContextMenuItem } from "../ContextMenu";
 
 const { getImageUrl } = useImages();
 
@@ -36,6 +46,7 @@ const props = defineProps<{
   image?: string | string[];
   icon?: string;
   isGroup?: boolean;
+  actions?: ContextMenuItem[];
 }>();
 
 const backgroundColor = ref('#ffffff');
@@ -267,6 +278,12 @@ watch(() => props.image, () => {
   &__icon {
     width: 32px;
     height: 32px;
+  }
+
+  &__actions{
+    position: absolute;
+    top: var(--space-s);
+    right: var(--space-s);
   }
 
   &__text {}
