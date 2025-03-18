@@ -1,0 +1,34 @@
+@use 'colors';
+@use "reset";
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  width: 100vw; height: 100vh;
+  overflow:hidden;
+  font-family: "Nunito";
+}
+*{
+  font-family: Nunito;
+}
+html,body{
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+:root{
+  --space: 1em;
+  --space-s: .5em;
+  --border-radius: 1em;
+}
+
+
+h1,h2,h3,h4{
+  &:has(strong){
+    font-weight: normal;
+  }
+}
