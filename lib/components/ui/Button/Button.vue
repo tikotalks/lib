@@ -34,8 +34,8 @@ import { ButtonSettings, ButtonStatus, ButtonType } from './Button.model';
 import { useSlots, computed, ref } from 'vue'
 import { useBemm } from 'bemm';
 import { Icons } from "open-icon";
-import { Colors, Size } from '@/types';
-import Icon from '@/components/ui/Icon/Icon.vue';
+import { Colors, Size } from '../../../types';
+import Icon from '../Icon/Icon.vue';
 import { useRoute } from 'vue-router';
 import type { Slots } from 'vue'
 
