@@ -18,12 +18,15 @@
     </div>
   </div>
 
-  <ContextMenu :class="bemm('actions')" v-if="actions" :config="{
-      items: actions.map((a)=>createContextMenuItem(a)),
+  <template  v-if="actionItems.length">
+    <Button :class="bemm('action-button')" v-if="actionItems.length == 1" :size="size" :color="ButtonSettings.Color.Primary" :icon="actionItems[0].icon" @click="actionItems[0].action && actionItems[0].action()">{{ actionItems[0].label }}</Button>
+    <ContextMenu :class="bemm('actions')" v-else :config="{
+      items: actionItems,
       position: 'bottom'
     }">
       <Button :class="bemm('action-button')" :size="size" :color="ButtonSettings.Color.Primary" :icon="ButtonSettings.Icon.THREE_DOTS_HORIZONTAL" />
     </ContextMenu>
+  </template>
 
   </div>
 </template>
@@ -56,6 +59,10 @@ const props = defineProps<{
   actions?: Partial<ContextMenuItem>[];
   size?: Size;
 }>();
+
+const actionItems = computed(()=>{
+  return props.actions?.map((a)=>createContextMenuItem(a)).filter((a)=>a.active) || [];
+})
 
 const backgroundColor = ref('#ffffff');
 const textColor = ref('#000000');
