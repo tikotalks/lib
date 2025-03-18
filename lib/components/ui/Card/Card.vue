@@ -1,14 +1,11 @@
 <template>
-  <div :class="bemm('', [isGroup ? 'is-group' : '', '', size ? size : 'medium'])" :data-images="props.image && toArray(props.image).length"
-  @mouseover="setBodyBackground(backgroundColor)"
+  <div
+    :class="bemm('', [isGroup ? 'is-group' : '', '', size ? size : 'medium'])"
+    :data-images="props.image && toArray(props.image).length"
     :style="backgroundStyle">
+    <div :class="bemm('container')">
 
-    <ContextMenu :class="bemm('actions')" v-if="actions" :config="{
-      items: actions.map((a)=>createContextMenuItem(a)),
-      position: 'bottom'
-    }">
-      <Button :class="bemm('action-button')" :size="size" :color="ButtonSettings.Color.Primary" :icon="ButtonSettings.Icon.THREE_DOTS_HORIZONTAL" />
-    </ContextMenu>
+
 
     <div :class="bemm('category-icon')" v-if="isGroup">
       <Icon :name="Icons.FILE_ARCHIVE"></Icon>
@@ -19,6 +16,15 @@
       <span v-if="icon && !image" :class="bemm('icon')" v-html="icon"></span>
       <span :class="bemm('text')" :style="{ color: textColor }">{{ text }}</span>
     </div>
+  </div>
+
+  <ContextMenu :class="bemm('actions')" v-if="actions" :config="{
+      items: actions.map((a)=>createContextMenuItem(a)),
+      position: 'bottom'
+    }">
+      <Button :class="bemm('action-button')" :size="size" :color="ButtonSettings.Color.Primary" :icon="ButtonSettings.Icon.THREE_DOTS_HORIZONTAL" />
+    </ContextMenu>
+
   </div>
 </template>
 
@@ -71,10 +77,6 @@ const backgroundStyle = computed(() => {
   };
 });
 
-const setBodyBackground = (color: string) => {
-  document.body.style.backgroundColor = color;
-};
-
 
 const setBackgroundColor = async () => {
   const imageUrl = getImageUrl(toArray(props.image)[0] || '', 'thumbnail');
@@ -126,7 +128,7 @@ watch(() => props.image, () => {
     background-position: center;
     background-repeat: no-repeat;
 
-    &:hover{
+    &:has(.card__container:hover){
       background-size: 110%;
       transform:scale(.95);
     }
