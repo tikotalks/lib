@@ -172,9 +172,9 @@ defineExpose({
   }
 
   .panel {
-    background: var(--context-panel-background, var(--background));
+    background: var(--context-panel-background, var(--color-background));
     border-radius: var(--context-panel-border-radius, var(--border-radius));
-    box-shadow: 0 0 100px 0px color-mix(in srgb, var(--dark), transparent 75%);
+    box-shadow: 0 0 100px 0px color-mix(in srgb, var(--color-dark), transparent 75%);
     padding: var(--context-panel-padding);
   }
 
@@ -227,8 +227,6 @@ defineExpose({
       position: fixed;
       --context-panel-position-top: var(--click-y);
       --context-panel-position-left: var(--click-x);
-      // --context-panel-position-x:
-      // --context-panel-position-y: var(--click-y);
     }
 
     &--bottom-left,
