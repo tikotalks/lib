@@ -36,6 +36,12 @@ export default defineConfig({
           vue: 'Vue',
           'bemm': 'bemm',
           'open-icon': 'OpenIcon'
+        },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') {
+            return 'lib.css';
+          }
+          return assetInfo.name || 'asset';
         }
       }
     }
