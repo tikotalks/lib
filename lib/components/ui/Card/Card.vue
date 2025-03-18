@@ -1,5 +1,5 @@
 <template>
-  <div :class="bemm('', [isGroup ? 'is-group' : '', ''])" :data-images="props.image && toArray(props.image).length"
+  <div :class="bemm('', [isGroup ? 'is-group' : '', '', size ? size : 'medium'])" :data-images="props.image && toArray(props.image).length"
   @mouseover="setBodyBackground(backgroundColor)"
     :style="backgroundStyle">
 
@@ -7,7 +7,7 @@
       items: actions.map((a)=>createContextMenuItem(a)),
       position: 'bottom'
     }">
-      <Button :class="bemm('action-button')" :icon="ButtonSettings.Icon.THREE_DOTS_HORIZONTAL" />
+      <Button :class="bemm('action-button')" :size="size" :color="ButtonSettings.Color.Primary" :icon="ButtonSettings.Icon.THREE_DOTS_HORIZONTAL" />
     </ContextMenu>
 
     <div :class="bemm('category-icon')" v-if="isGroup">
@@ -33,6 +33,7 @@ import { useImages } from "@tikotalks/media";
 import ContextMenu from "../ContextMenu/ContextMenu.vue";
 import { Button, ButtonSettings } from "../Button";
 import { createContextMenuItem, type ContextMenuItem } from "../ContextMenu";
+import type { Size } from "@/types";
 
 const { getImageUrl } = useImages();
 
@@ -47,6 +48,7 @@ const props = defineProps<{
   icon?: string;
   isGroup?: boolean;
   actions?: Partial<ContextMenuItem>[];
+  size?: Size;
 }>();
 
 const backgroundColor = ref('#ffffff');
@@ -68,7 +70,6 @@ const backgroundStyle = computed(() => {
     '--text-color': `${textColor.value}`,
   };
 });
-
 
 const setBodyBackground = (color: string) => {
   document.body.style.backgroundColor = color;
@@ -108,6 +109,16 @@ watch(() => props.image, () => {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+
+  &--small{
+    width: 5em;
+  }
+  &--medium{
+    width: 10em;
+  }
+  &--large{
+    width: 15em;
+  }
 
   &[data-images="1"] {
     background-size: 100%;
