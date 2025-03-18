@@ -8,14 +8,19 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
+      tsconfigPath: resolve(__dirname, './tsconfig.app.json'),
       include: ['lib/**/*.ts', 'lib/**/*.vue'],
       outDir: 'dist',
       staticImport: true,
       insertTypesEntry: true,
-      exclude: ['node_modules', 'dist']
+      rollupTypes: false,
+      copyDtsFiles: true,
+      aliasesExclude: ['vue'],
+      compilerOptions: {
+        skipLibCheck: true
+      }
     })
   ],
-
 
   build: {
     lib: {
@@ -29,7 +34,7 @@ export default defineConfig({
       output: {
         globals: {
           vue: 'Vue',
-          'bemm':  'bemm',
+          'bemm': 'bemm',
           'open-icon': 'OpenIcon'
         }
       }
