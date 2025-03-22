@@ -1,0 +1,28 @@
+:root {
+
+  // Spacing
+  --space-base: 1em;
+  --space-xs: calc(var(--space-base) * 0.25);
+  --space-s: calc(var(--space-base) * 0.5);
+  --space: var(--space-base);
+  --space-l: calc(var(--space-base) * 1.5);
+  --space-xl: calc(var(--space-base) * 2);
+  --space-xxl: calc(var(--space-base) * 4);
+  --spacing: clamp(2em, 4vw, 8em);
+
+  // Border radius
+  --border-radius-base: 0.75em;
+  --border-radius-sm: calc(var(--border-radius-base) * 0.5);
+  --border-radius: var(--border-radius-base);
+  --border-radius-lg: calc(var(--border-radius-base) * 2);
+
+  // Transitions
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  // Shadows
+  --shadow-sm: 0 0.0625em 0.125em color-mix(in srgb, var(--color-foreground), transparent 95%);
+  --shadow: 0 0.25em 0.375em color-mix(in srgb, var(--color-foreground), transparent 90%);
+  --shadow-lg: 0 0.625em 0.9375em color-mix(in srgb, var(--color-foreground), transparent 90%);
+}
