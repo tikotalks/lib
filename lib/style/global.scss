@@ -1,0 +1,50 @@
+@use "reset";
+@use "typography";
+@use "colors";
+@use "theme";
+@use "animations";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scrollbar-color: color-mix(in srgb, var(--color-foreground), transparent 75%) transparent;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body, system-ui);
+  line-height: 1.5;
+  font-size: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to right bottom, var(--color-background),color-mix(in srgb, var(--color-background),var(--color-primary) 50%));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+// Container width control
+.container {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 var(--space);
+}
+
+// Interactive elements enhancement
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    color: var(--color-primary-light);
+    text-decoration: underline;
+  }
+}
+
+// List styling
