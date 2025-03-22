@@ -7,15 +7,15 @@
     color.channel($color, "red") * 0.2126 +
     color.channel($color, "green") * 0.7152 +
     color.channel($color, "blue") * 0.0722;
-  @return if($luminance > 140, #000000, #ffffff);
+  @return if($luminance > 150, #000000, #ffffff);
 }
 
 // Colors map
 $colors: (
-  primary: #9c3c97,
-  secondary: #5cb6c0,
-  tertiary: #c9c47d,
-  dark: #061a2e,
+  primary: #6366f1,
+  secondary: #14b8a6,
+  tertiary: #ffd013,
+  dark: #090224,
   light: #ffffff,
   success: #53d474,
   error: #c8515d,
@@ -33,6 +33,8 @@ $colors: (
   // Set default background/foreground
   --color-background: var(--color-light);
   --color-foreground: var(--color-dark);
+  --text-foreground: var(--color-background);
+  --text-background: var(--color-foreground);
   --color-background-alt: color-mix(in srgb, var(--color-dark), var(--color-light) 90%);
   --color-foreground-alt: color-mix(in srgb, var(--color-dark), var(--color-light) 10%);
 }
