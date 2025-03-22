@@ -5,7 +5,7 @@ import { Card } from "./components/ui/Card";
 import { ContextMenu } from "./components/ui/ContextMenu";
 import { InputText, FormGroup } from "./components/ui/Form";
 import { Icon } from './components/ui/Icon';
-import './style/app.scss';
+import './style/global.scss';
 
 // Export components
 export {
